@@ -1,0 +1,21 @@
+# Core AI Framework
+fair-llm>=0.1
+
+# Jupyter Environment
+jupyter>=1.0.0
+notebook>=7.0.0
+ipywidgets>=8.0.0 
+
+# Deep Learning & Transformers
+torch>=2.0.0
+transformers>=4.35.0
+accelerate>=0.25.0 
+bitsandbytes>=0.41.0  
+
+# Utilities
+python-dotenv>=1.0.0
+rich>=13.0.0 
+
+# Data & Visualization
+numpy>=1.24.0
+matplotlib>=3.7.0
