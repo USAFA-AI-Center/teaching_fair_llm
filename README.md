@@ -53,6 +53,18 @@ This installs everything you need:
 
 **This might take a few minutes**
 
+### Step 3.5: Connect Jupyter to Your Virtual Environment
+
+**⚠️ CRITICAL STEP** - Don't skip this! This ensures Jupyter uses YOUR virtual environment (with all the packages you just installed).
+
+```bash
+# Make sure your venv is still activated (you should see "(.venv)" in your prompt)
+# Then run:
+python -m ipykernel install --user --name=llm-math-demo --display-name="Python (LLM Math Demo)"
+```
+
+**What does this do?** It registers your virtual environment as a "kernel" that Jupyter can use. Without this, Jupyter might use your system Python, and you'll get "Module not found" errors even though you installed everything!
+
 ### Step 4: Get Your Hugging Face Token
 
 **Why do I need this?** Hugging Face hosts thousands of open-source AI models. To download and use them, you need a free access token (like a library card for AI models).
@@ -73,7 +85,7 @@ This installs everything you need:
 7. Click **Generate token**
 8. **IMPORTANT:** Copy your token immediately! You won't see it again.
 
-It should look like: `hf_AbCdEfGhIjKlMnxxxxxxxxxxx`
+It should look like: `hf_AbCdEfGhIjKlMnOpQrStUvWxYz1234567890`
 
 #### Save Your Token
 Create a file called `.env` in this project folder:
@@ -94,31 +106,18 @@ HUGGING_FACE_HUB_TOKEN=hf_YourActualTokenHere
 jupyter notebook
 ```
 
-This will open Jupyter in your web browser. Navigate to `math_demo.ipynb` and open it!
+This will open Jupyter in your web browser. 
 
-## 📓 The Demo Notebook
+**Important:** Navigate to `math_demo.ipynb` and open it. Then:
 
-The notebook (`math_demo.ipynb`) walks you through several experiments:
+1. Look at the **top right corner** of the notebook
+2. Click on the kernel name (might say "Python 3" or similar)
+3. Select **"Python (LLM Math Demo)"** from the dropdown
+4. If you don't see this option, go back and make sure you completed Step 3.5!
 
-### Experiment 1: Simple Math (Pattern Matching Territory)
-You'll test the LLM on common arithmetic problems:
-- `2 + 2 = ?`
-- `10 × 10 = ?`
-- `5² = ?`
+**Why does this matter?** This ensures the notebook uses your virtual environment with all the installed packages. If you skip this, you'll get import errors!
 
-**Question to think about:** Why does the LLM succeed here?
-
-### Experiment 2: Complex Math (Beyond Memorization)
-You'll test the LLM on uncommon calculations:
-- `8,347 × 6,291 = ?`
-- `237 × 843 = ?`
-
-**Question to think about:** What happens when the pattern isn't in the training data?
-
-### Experiment 3: The Reveal
-You'll see the attention mechanism in action and understand what the LLM is *actually* doing when it "solves" math problems.
-
-## 🤔 Discussion Questions
+## Discussion Questions
 
 As you work through the notebook, consider:
 
@@ -129,17 +128,71 @@ As you work through the notebook, consider:
 
 ## 🛠️ Troubleshooting
 
+### "Kernel Not Found" or Wrong Kernel in Jupyter
+If you don't see "Python (LLM Math Demo)" in the kernel selector, or the notebook won't connect:
+
+```bash
+# Make sure venv is activated (you should see "(venv)" in your prompt)
+source venv/bin/activate  # Mac/Linux
+venv\Scripts\activate     # Windows
+
+# Reinstall ipykernel
+pip install ipykernel
+
+# Register the kernel again
+python -m ipykernel install --user --name=llm-math-demo --display-name="Python (LLM Math Demo)"
+
+# Restart Jupyter completely
+# Press Ctrl+C in the terminal where Jupyter is running
+# Then launch it again: jupyter notebook
+```
+
+After restarting, open the notebook and select the correct kernel from the top right.
+
 ### "Module not found" Error
-Make sure your virtual environment is activated:
+This almost always means Jupyter is using your system Python instead of your virtual environment:
+
+**Solution 1 - Check your kernel:**
+1. In the notebook, look at top right corner
+2. Click the kernel name
+3. Select "Python (LLM Math Demo)"
+
+**Solution 2 - Verify packages in venv:**
+```bash
+# Make sure venv is activated
+source venv/bin/activate  # Mac/Linux
+venv\Scripts\activate     # Windows
+
+# Check if packages are installed
+pip list | grep fair-llm
+pip list | grep transformers
+
+# If missing, reinstall
+pip install -r requirements.txt
+```
+
+**Solution 3 - Nuclear option (start fresh):**
+```bash
+# Deactivate current venv
+deactivate
+
+# Remove old venv
+rm -rf venv  # Mac/Linux
+rmdir /s venv  # Windows
+
+# Start over from Step 2 in the README
+```
+
+### Virtual Environment Not Activated
+Make sure your virtual environment is activated before running ANY commands:
 ```bash
 source venv/bin/activate  # Mac/Linux
 venv\Scripts\activate     # Windows
 ```
 
-Then reinstall:
-```bash
-pip install -r requirements.txt
-```
+You should see `(venv)` at the beginning of your terminal prompt.
+
+If you don't see it, the venv is not activated!
 
 ### "Authentication Failed" Error
 - Check that your `.env` file exists in the project root
