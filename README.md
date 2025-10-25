@@ -193,12 +193,3 @@ Don't worry! The first time you run the notebook, it needs to download the LLM (
 
 ### "CUDA/GPU Not Found" Warning
 This is fine! The demo will automatically use your CPU. It might be a bit slower, but it will work perfectly.
-
-## 📚 What's Next?
-
-After completing this demo, you'll understand:
-- ✅ The fundamental limitation of pure language models
-- ✅ Why we need **agents** (LLMs + tools) for reliable computation
-- ✅ The difference between statistical prediction and algorithmic computation
-
-In the next class, we'll explore how to give LLMs actual tools (like calculators, databases, and APIs) to overcome these limitations!
