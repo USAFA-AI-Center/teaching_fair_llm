@@ -1,14 +1,4 @@
-# 🧮 Can LLMs Do Math? - Hands-On Demo
-
-Welcome to your first hands-on exploration of Large Language Models! In this demo, you'll discover firsthand whether LLMs can truly "do" math, or if something else is going on under the hood.
-
-## 🎯 What You'll Learn
-
-By the end of this demo, you'll understand:
-- ✅ How LLMs handle mathematical operations
-- ✅ The difference between **pattern matching** and **computing**
-- ✅ Why LLMs succeed on simple math but struggle with complex calculations
-- ✅ The fundamental limitation: **prediction vs. calculation**
+# Teaching Fair LLM
 
 ## 🚀 Getting Started
 
@@ -116,15 +106,6 @@ This will open Jupyter in your web browser.
 4. If you don't see this option, go back and make sure you completed Step 3.5!
 
 **Why does this matter?** This ensures the notebook uses your virtual environment with all the installed packages. If you skip this, you'll get import errors!
-
-## Discussion Questions
-
-As you work through the notebook, consider:
-
-1. **Is the LLM calculating or pattern-matching?**
-2. **What's the difference between predicting text and computing results?**
-3. **Why does the LLM do well on common problems but fail on uncommon ones?**
-4. **If you wanted a reliable AI math assistant, what would you need to add?**
 
 ## 🛠️ Troubleshooting
 
