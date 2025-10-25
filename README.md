@@ -50,7 +50,7 @@ This installs everything you need:
 ```bash
 # Make sure your venv is still activated (you should see "(.venv)" in your prompt)
 # Then run:
-python -m ipykernel install --user --name=llm-math-demo --display-name="Python (LLM Math Demo)"
+python -m ipykernel install --user --name=llm-math-demo --display-name="Python (LLM Demos)"
 ```
 
 **What does this do?** It registers your virtual environment as a "kernel" that Jupyter can use. Without this, Jupyter might use your system Python, and you'll get "Module not found" errors even though you installed everything!
